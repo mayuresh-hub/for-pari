@@ -2,100 +2,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Rose Day Pari ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<title>Happy Rose Day Pari </title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #ffc0cb, #ff4d6d);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-}.container { background: rgba(255,255,255,0.9); padding: 40px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-width: 700px; position: relative; z-index: 10; }
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(to bottom,#ffe6eb,#ffc2d1);
+  overflow:hidden;
+}
+.center{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+}
+.card{
+  background:white;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  max-width:600px;
+}
+h1{
+  font-family:'Playfair Display',serif;
+  color:#c9184a;
+}
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:16px;
+  margin:10px;
+  transition:0.3s;
+}
+.primary{background:#ff4d6d;color:white;}
+.primary:hover{transform:scale(1.05);}
+.secondary{background:#adb5bd;color:white;}
+.hidden{display:none;}/* Envelope */ .envelope{ width:300px; height:200px; background:#ff8fab; position:relative; margin:auto; cursor:pointer; border-radius:10px; } .flap{ position:absolute; width:100%; height:100%; background:#ff4d6d; clip-path:polygon(0 0,100% 0,50% 60%); transform-origin:top; transition:0.8s; } .open .flap{ transform:rotateX(180deg); }
 
-h1 { color: #e60039; }
+/* Bouquet */ .bouquet{ position:relative; height:200px; margin-top:20px; } .rose{ width:30px; height:30px; background:radial-gradient(circle,#ff4d6d,#c9184a); border-radius:50%; position:absolute; bottom:0; animation:grow 2s ease forwards; } @keyframes grow{ from{transform:translateY(100px);opacity:0;} to{transform:translateY(0);opacity:1;} }
 
-button { padding: 12px 25px; border: none; border-radius: 20px; font-size: 16px; cursor: pointer; margin: 10px; transition: 0.3s; }
+/* Proposal Modal */ .modal{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; } .modal-box{ background:white; padding:40px; border-radius:20px; text-align:center; }
 
-.open-btn { background: #ff3366; color: white; } .open-btn:hover { transform: scale(1.1); }
+/* Fireworks */ .firework{ position:fixed; width:5px; height:5px; border-radius:50%; animation:explode 1s ease-out forwards; } @keyframes explode{ from{transform:scale(1);opacity:1;} to{transform:scale(15);opacity:0;} }
 
-.rose { position: absolute; font-size: 30px; animation: fall linear infinite; }
-
-@keyframes fall { from { transform: translateY(-100px); } to { transform: translateY(110vh); } }
-
-.hidden { display: none; }
-
-.proposal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; }
-
-.proposal-box { background: white; padding: 40px; border-radius: 20px; }
-
-.yes { background: #ff3366; color: white; } .no { background: gray; color: white; position: relative; }
-
-footer { position: absolute; bottom: 10px; font-size: 14px; color: #800020; } </style>
+footer{ position:fixed; bottom:10px; width:100%; text-align:center; font-size:14px; color:#6d6875; } </style>
 
 </head>
-<body><audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-</audio><div class="container" id="intro">
-<h1>🌹 For My Beautiful Pari 🌹</h1>
-<p>A magical Rose Day surprise for my Jaanu ❤️</p>
-<button class="open-btn" onclick="openLetter()">Click to Open My Heart 💌</button>
-</div><div class="container hidden" id="letter">
-<h1>Happy Rose Day, Pari ❤️</h1>
-<p>
-My dearest Pari, my Jaanu,<br><br>
-You are my entire world. Like a rose blooming beautifully even among thorns, you make my life beautiful even on my hardest days.<br><br>
-Your smile is my peace. Your voice is my comfort. Your love is my greatest blessing.<br><br>
-I am hopelessly, endlessly, madly in love with you.<br><br>
-Forever Yours,<br>
-<b>Mayuresh ❤️</b>
-</p>
-<div>
-<span style="font-size:40px">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</span>
-</div>
-<button class="yes" onclick="showProposal()">Will You Be Mine Forever? 💍</button>
-</div><div class="proposal hidden" id="proposal">
-<div class="proposal-box">
-<h2>Pari, will you stay with me forever? ❤️</h2>
-<button class="yes" onclick="acceptLove()">YES ❤️</button>
-<button class="no" onmouseover="moveButton(this)">No 🙈</button>
-</div>
-</div><footer>Made with infinite love by Mayuresh for Pari ❤️🌹</footer><script>
-function createRoses() {
-  for (let i = 0; i < 25; i++) {
-    let rose = document.createElement('div');
-    rose.className = 'rose';
-    rose.innerHTML = '🌹';
-    rose.style.left = Math.random() * 100 + 'vw';
-    rose.style.animationDuration = (5 + Math.random() * 5) + 's';
-    document.body.appendChild(rose);
+<body><div class="center" id="intro">
+  <div class="card">
+    <h1> Happyyyy Rose Day Pari </h1>
+    <div class="envelope" onclick="openLetter(this)">
+      <div class="flap"></div>
+    </div>
+    <p>Tap the envelope to open my heart </p>
+  </div>
+</div><div class="center hidden" id="letter">
+  <div class="card">
+    <h1>Happy Rose Day, My Jaanu </h1>
+    <p>
+      My dearest Pari,<br><br>
+      Like the softest rose petals, your love wraps around my heart so gently.
+      You are my peace, my happiness, my forever.
+      Every day with you feels like a beautiful love story written just for us.
+      <br><br>
+      I am endlessly grateful for you.
+      <br><br>
+      Forever Yours,<br>
+      <b>Mayuresh </b>
+    </p><div class="bouquet" id="bouquet"></div>
+
+<button class="primary" onclick="showProposal()">Will You Be Mine Forever? </button>
+
+  </div>
+</div><div class="modal hidden" id="proposal">
+  <div class="modal-box">
+    <h2>Pari, will you stay with me forever? </h2>
+    <div>
+      <button class="primary" onclick="acceptLove()">YES </button>
+      <button class="secondary" id="noBtn">No </button>
+    </div>
+  </div>
+</div><footer>Made with love by Mayuresh for Pari </footer><script>
+function openLetter(env){
+  env.classList.add('open');
+  setTimeout(()=>{
+    document.getElementById('intro').classList.add('hidden');
+    document.getElementById('letter').classList.remove('hidden');
+    createBouquet();
+  },800);
+}
+
+function createBouquet(){
+  const bouquet=document.getElementById('bouquet');
+  for(let i=0;i<7;i++){
+    const r=document.createElement('div');
+    r.className='rose';
+    r.style.left=(40+i*35)+'px';
+    bouquet.appendChild(r);
   }
 }
 
-function openLetter() {
-  document.getElementById('intro').classList.add('hidden');
-  document.getElementById('letter').classList.remove('hidden');
-  document.getElementById('music').play();
-}
-
-function showProposal() {
+function showProposal(){
   document.getElementById('proposal').classList.remove('hidden');
 }
 
-function acceptLove() {
-  document.querySelector('.proposal-box').innerHTML = "<h1>YAYYY ❤️🌹</h1><p>You just made Mayuresh the happiest man alive!</p>";
+function acceptLove(){
+  document.getElementById('proposal').innerHTML='<div class="modal-box"><h1>She Said YES </h1><p>You made Mayuresh the happiest man alive.</p></div>';
+  launchFireworks();
 }
 
-function moveButton(btn) {
-  btn.style.position = 'absolute';
-  btn.style.left = Math.random() * 200 + 'px';
-  btn.style.top = Math.random() * 200 + 'px';
+function launchFireworks(){
+  for(let i=0;i<20;i++){
+    const fw=document.createElement('div');
+    fw.className='firework';
+    fw.style.background='hsl('+Math.random()*360+',100%,60%)';
+    fw.style.top=Math.random()*100+'vh';
+    fw.style.left=Math.random()*100+'vw';
+    document.body.appendChild(fw);
+    setTimeout(()=>fw.remove(),1000);
+  }
 }
 
-createRoses();
+// Fix overlap issue
+const noBtn=document.getElementById('noBtn');
+noBtn.addEventListener('mouseenter',()=>{
+  noBtn.style.position='relative';
+  noBtn.style.left=Math.random()*100+'px';
+});
 </script></body>
 </html>
