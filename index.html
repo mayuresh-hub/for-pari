@@ -8,31 +8,32 @@
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(to bottom,#ffe6eb,#ffc2d1);
+  background:linear-gradient(135deg,#ffd6e0,#ffe9f0,#fff0f5);
   overflow-x:hidden;
 }
-.center{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
+.section{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  width:90%;
+  padding:20px;
 }
-.card{
-  background:white;
+.glass{
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(15px);
+  border-radius:25px;
   padding:40px;
-  border-radius:20px;
   box-shadow:0 15px 40px rgba(0,0,0,0.15);
   max-width:600px;
-  margin:auto;
+  width:100%;
 }
 h1{
   font-family:'Playfair Display',serif;
-  color:#c9184a;
+  color:#b3003c;
 }
 button{
-  padding:12px 24px;
+  padding:12px 25px;
   border:none;
   border-radius:30px;
   cursor:pointer;
@@ -41,50 +42,53 @@ button{
   transition:0.3s;
 }
 .primary{background:#ff4d6d;color:white;}
-.primary:hover{transform:scale(1.05);}
-.secondary{background:#adb5bd;color:white;}
-.hidden{display:none;}/* Envelope */ .envelope{ width:280px; height:180px; background:#ff8fab; position:relative; margin:20px auto; cursor:pointer; border-radius:10px; perspective:1000px; } .flap{ position:absolute; width:100%; height:100%; background:#ff4d6d; clip-path:polygon(0 0,100% 0,50% 60%); transform-origin:top; transition:0.8s; } .open .flap{ transform:rotateX(180deg); }
+.primary:hover{transform:scale(1.08);}
+.secondary{background:#6c757d;color:white;}
+.hidden{display:none;}/* Envelope */ .envelope{ width:260px; height:160px; background:#ff8fab; margin:20px auto; position:relative; cursor:pointer; border-radius:12px; perspective:1000px; } .flap{ position:absolute; width:100%; height:100%; background:#ff4d6d; clip-path:polygon(0 0,100% 0,50% 60%); transform-origin:top; transition:0.8s; } .open .flap{transform:rotateX(180deg);}
 
-/* Bouquet */ .bouquet{ position:relative; height:180px; margin-top:20px; } .rose{ width:28px; height:28px; background:radial-gradient(circle,#ff4d6d,#c9184a); border-radius:50%; position:absolute; bottom:0; animation:grow 1.5s ease forwards; } @keyframes grow{ from{transform:translateY(80px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+/* Bouquet */ .bouquet{position:relative;height:160px;margin-top:20px;} .rose{ width:30px;height:30px; background:radial-gradient(circle,#ff4d6d,#b3003c); border-radius:50%; position:absolute;bottom:0; animation:rise 1.5s ease forwards; } @keyframes rise{ from{transform:translateY(80px);opacity:0;} to{transform:translateY(0);opacity:1;} }
 
-/* Modal */ .modal{ position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; z-index:999; } .modal-box{ background:white; padding:40px; border-radius:20px; text-align:center; width:90%; max-width:400px; }
+/* Romantic celebration screen */ #celebration{ background:linear-gradient(135deg,#ffccd5,#ffc2d1,#ffe5ec); }
 
-/* Fireworks */ .firework{ position:fixed; width:6px; height:6px; border-radius:50%; animation:explode 1s ease-out forwards; z-index:1000; } @keyframes explode{ from{transform:scale(1);opacity:1;} to{transform:scale(12);opacity:0;} }
+/* Fireworks */ .firework{ position:fixed; width:8px;height:8px; border-radius:50%; animation:explode 1s ease-out forwards; } @keyframes explode{ from{transform:scale(1);opacity:1;} to{transform:scale(15);opacity:0;} }
 
-footer{ position:fixed; bottom:10px; width:100%; text-align:center; font-size:14px; color:#6d6875; } </style>
+footer{ text-align:center; padding:15px; color:#6d6875; font-size:14px; } </style>
 
 </head>
-<body><div class="center" id="intro">
-  <div class="card">
+<body><!-- Intro --><div class="section" id="intro">
+  <div class="glass">
     <h1>🌹 Happyyyy Rose Day Pari 🌹</h1>
     <div class="envelope" onclick="openLetter(this)">
       <div class="flap"></div>
     </div>
     <p>Tap the envelope to open my heart 💌</p>
   </div>
-</div><div class="center hidden" id="letter">
-  <div class="card">
+</div><!-- Letter --><div class="section hidden" id="letter">
+  <div class="glass">
     <h1>Happy Rose Day, My Jaanu ❤️</h1>
     <p>
       My dearest Pari,<br><br>
-      Like the softest rose petals, your love wraps around my heart so gently.
+      Like the softest rose petals, your love makes my life beautiful.
       You are my peace, my happiness, my forever.
-      Every day with you feels like a beautiful love story written just for us.
-      <br><br>
+      Today isn’t just Rose Day… it’s a reminder that I choose you,
+      every single day. 🌹<br><br>
       Forever Yours,<br>
       <b>Mayuresh ❤️</b>
-    </p><div class="bouquet" id="bouquet"></div>
-
-<button class="primary" onclick="showProposal()">Will You Be Mine Forever? 💍</button>
-
+    </p>
+    <div class="bouquet" id="bouquet"></div>
+    <button class="primary" onclick="showProposal()">Will You Be Mine Forever? 💍</button>
   </div>
-</div><div class="modal hidden" id="proposal">
-  <div class="modal-box" id="proposalBox">
+</div><!-- Proposal --><div class="section hidden" id="proposal">
+  <div class="glass">
     <h2>Pari, will you stay with me forever? ❤️</h2>
-    <div style="margin-top:20px;">
-      <button class="primary" onclick="acceptLove()">YES ❤️</button>
-      <button class="secondary" id="noBtn">No 🙈</button>
-    </div>
+    <button class="primary" onclick="acceptLove()">YES ❤️</button>
+    <button class="secondary" id="noBtn">No 🙈</button>
+  </div>
+</div><!-- Celebration --><div class="section hidden" id="celebration">
+  <div class="glass">
+    <h1>She Said YES ❤️🌹</h1>
+    <p>You made Mayuresh the happiest man alive.</p>
+    <p>Happy Rose Day, My Forever 💖</p>
   </div>
 </div><footer>Made with love by Mayuresh for Pari 🌹</footer><script>
 function openLetter(env){
@@ -102,26 +106,24 @@ function createBouquet(){
   for(let i=0;i<7;i++){
     const r=document.createElement('div');
     r.className='rose';
-    r.style.left=(50+i*35)+'px';
+    r.style.left=(40+i*35)+'px';
     bouquet.appendChild(r);
   }
 }
 
 function showProposal(){
+  document.getElementById('letter').classList.add('hidden');
   document.getElementById('proposal').classList.remove('hidden');
 }
 
 function acceptLove(){
-  const box=document.getElementById('proposalBox');
-  box.innerHTML='<h1>She Said YES ❤️🌹</h1><p>You made Mayuresh the happiest man alive.</p>';
+  document.getElementById('proposal').classList.add('hidden');
+  document.getElementById('celebration').classList.remove('hidden');
   launchFireworks();
-  setTimeout(()=>{
-    document.getElementById('proposal').classList.add('hidden');
-  },2500);
 }
 
 function launchFireworks(){
-  for(let i=0;i<25;i++){
+  for(let i=0;i<30;i++){
     const fw=document.createElement('div');
     fw.className='firework';
     fw.style.background='hsl('+Math.random()*360+',100%,60%)';
@@ -132,12 +134,14 @@ function launchFireworks(){
   }
 }
 
-// Proper no button movement without overlap
+// No button escape
 const noBtn=document.getElementById('noBtn');
 noBtn.addEventListener('mouseenter',()=>{
   noBtn.style.position='relative';
-  noBtn.style.left=(Math.random()*100-50)+'px';
+  noBtn.style.left=(Math.random()*120-60)+'px';
 });
 </script></body>
 </html>
+
+
 
