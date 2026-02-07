@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Rose Day Pari ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ffc0cb, #ff4d6d);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}.container { background: rgba(255,255,255,0.9); padding: 40px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-width: 700px; position: relative; z-index: 10; }
+
+h1 { color: #e60039; }
+
+button { padding: 12px 25px; border: none; border-radius: 20px; font-size: 16px; cursor: pointer; margin: 10px; transition: 0.3s; }
+
+.open-btn { background: #ff3366; color: white; } .open-btn:hover { transform: scale(1.1); }
+
+.rose { position: absolute; font-size: 30px; animation: fall linear infinite; }
+
+@keyframes fall { from { transform: translateY(-100px); } to { transform: translateY(110vh); } }
+
+.hidden { display: none; }
+
+.proposal { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: flex; justify-content: center; align-items: center; }
+
+.proposal-box { background: white; padding: 40px; border-radius: 20px; }
+
+.yes { background: #ff3366; color: white; } .no { background: gray; color: white; position: relative; }
+
+footer { position: absolute; bottom: 10px; font-size: 14px; color: #800020; } </style>
+
+</head>
+<body><audio id="music" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+</audio><div class="container" id="intro">
+<h1>🌹 For My Beautiful Pari 🌹</h1>
+<p>A magical Rose Day surprise for my Jaanu ❤️</p>
+<button class="open-btn" onclick="openLetter()">Click to Open My Heart 💌</button>
+</div><div class="container hidden" id="letter">
+<h1>Happy Rose Day, Pari ❤️</h1>
+<p>
+My dearest Pari, my Jaanu,<br><br>
+You are my entire world. Like a rose blooming beautifully even among thorns, you make my life beautiful even on my hardest days.<br><br>
+Your smile is my peace. Your voice is my comfort. Your love is my greatest blessing.<br><br>
+I am hopelessly, endlessly, madly in love with you.<br><br>
+Forever Yours,<br>
+<b>Mayuresh ❤️</b>
+</p>
+<div>
+<span style="font-size:40px">🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹</span>
+</div>
+<button class="yes" onclick="showProposal()">Will You Be Mine Forever? 💍</button>
+</div><div class="proposal hidden" id="proposal">
+<div class="proposal-box">
+<h2>Pari, will you stay with me forever? ❤️</h2>
+<button class="yes" onclick="acceptLove()">YES ❤️</button>
+<button class="no" onmouseover="moveButton(this)">No 🙈</button>
+</div>
+</div><footer>Made with infinite love by Mayuresh for Pari ❤️🌹</footer><script>
+function createRoses() {
+  for (let i = 0; i < 25; i++) {
+    let rose = document.createElement('div');
+    rose.className = 'rose';
+    rose.innerHTML = '🌹';
+    rose.style.left = Math.random() * 100 + 'vw';
+    rose.style.animationDuration = (5 + Math.random() * 5) + 's';
+    document.body.appendChild(rose);
+  }
+}
+
+function openLetter() {
+  document.getElementById('intro').classList.add('hidden');
+  document.getElementById('letter').classList.remove('hidden');
+  document.getElementById('music').play();
+}
+
+function showProposal() {
+  document.getElementById('proposal').classList.remove('hidden');
+}
+
+function acceptLove() {
+  document.querySelector('.proposal-box').innerHTML = "<h1>YAYYY ❤️🌹</h1><p>You just made Mayuresh the happiest man alive!</p>";
+}
+
+function moveButton(btn) {
+  btn.style.position = 'absolute';
+  btn.style.left = Math.random() * 200 + 'px';
+  btn.style.top = Math.random() * 200 + 'px';
+}
+
+createRoses();
+</script></body>
+</html>
